@@ -104,7 +104,7 @@ namespace DungeonsOfDoom
                             world[x, y].Monster = new Monster(30);
 
                         if (random.Next(0, 100) < 10)
-                            world[x, y].Item = new Item("Sword");
+                            world[x, y].Item = new Sword(20, "Harbringer Of Doom", 5);
                     }
                 }
             }

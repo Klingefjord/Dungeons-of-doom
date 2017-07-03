@@ -17,5 +17,11 @@ namespace DungeonsOfDoom
         public int X { get; set; }
         public int Y { get; set; }
         public Bag Bag { get; set; } = new Bag(20);
+
+        // Metoder
+        public void Drink(Potion potion)
+        {
+            //this.Health += potion.
+        }
     }
 }

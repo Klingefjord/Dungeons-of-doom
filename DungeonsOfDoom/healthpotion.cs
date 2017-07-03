@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace DungeonsOfDoom
 {
-    class Sword : Weapon
+    class HealthPotion : Potion
     {
-        public int Range { get; } = 1;
-
-        public Sword(double dmg, string name, int weight) : base(dmg, name, weight)
+ 
+        public HealthPotion(string name, int weight, int strength) : base(name, weight, "Health", strength)
         {
-            
+
         }
     }
 }

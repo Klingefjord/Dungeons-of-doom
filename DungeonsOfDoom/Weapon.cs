@@ -10,7 +10,7 @@ namespace DungeonsOfDoom
     {
         public double DmgBuff { get; set; }
 
-        public Weapon(double damage, string name) : base(name)  
+        public Weapon(double damage, string name, int weight) : base(name, weight)  
         {
             DmgBuff = damage;
         }

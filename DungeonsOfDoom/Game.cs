@@ -23,9 +23,8 @@ namespace DungeonsOfDoom
                 DisplayStats();
                 DisplayWorld();
                 PrintBagContents();
-                AskForMovement();
                 CheckRoom();
-                // PrintBagContents();
+                AskForMovement();
                 // UseItems();
             } while (player.Health > 0);
 
@@ -53,10 +52,10 @@ namespace DungeonsOfDoom
             if (world[player.X, player.Y].Monster != null)
             {
                 player.Health -= 5;
+                Console.WriteLine($"You just fought a {world[player.X, player.Y].Monster.Name}");
                 world[player.X, player.Y].Monster = null;
-                // Console.WriteLine($"You just fought a {world[player.X, player.Y].Monster.Name}");
-
-            } else if (world[player.X, player.Y].Item != null)
+            }
+            else if (world[player.X, player.Y].Item != null)
             {
                 player.Bag.Contents.Add(world[player.X, player.Y].Item);
                 world[player.X, player.Y].Item = null;
@@ -131,8 +130,11 @@ namespace DungeonsOfDoom
             {
                 for (int x = 0; x < world.GetLength(0); x++)
                 {
+                
+                    // Instantiera ett room-objekt
                     world[x, y] = new Room();
 
+                    // Ifall inte spelaren står i rutan, slumpa och se om vi placerar ett objekt i room
                     if (player.X != x || player.Y != y)
                     {
                         if (random.Next(0, 100) < 10)

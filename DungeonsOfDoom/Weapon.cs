@@ -8,7 +8,7 @@ namespace DungeonsOfDoom
 {
     abstract class Weapon : Item
     {
-        public double DmgBuff { get; set; }
+        public double DmgBuff { get; }
 
         public Weapon(double damage, string name, int weight) : base(name, weight)  
         {

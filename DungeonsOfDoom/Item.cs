@@ -14,7 +14,7 @@ namespace DungeonsOfDoom
             Weight = weight;
         }
 
-        public string Name { get; set; }
-        public int Weight { get; set; }
+        public string Name { get; }
+        public int Weight { get; }
     }
 }

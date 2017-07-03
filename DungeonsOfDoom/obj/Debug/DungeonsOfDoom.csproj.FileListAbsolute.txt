@@ -1,0 +1,18 @@
+c:\users\pontus\documents\visual studio 2017\Projects\DungeonsOfDoom\DungeonsOfDoom\bin\Debug\DungeonsOfDoom.exe.config
+c:\users\pontus\documents\visual studio 2017\Projects\DungeonsOfDoom\DungeonsOfDoom\bin\Debug\DungeonsOfDoom.exe
+c:\users\pontus\documents\visual studio 2017\Projects\DungeonsOfDoom\DungeonsOfDoom\bin\Debug\DungeonsOfDoom.pdb
+c:\users\pontus\documents\visual studio 2017\Projects\DungeonsOfDoom\DungeonsOfDoom\obj\Debug\DungeonsOfDoom.csprojResolveAssemblyReference.cache
+c:\users\pontus\documents\visual studio 2017\Projects\DungeonsOfDoom\DungeonsOfDoom\obj\Debug\DungeonsOfDoom.exe
+c:\users\pontus\documents\visual studio 2017\Projects\DungeonsOfDoom\DungeonsOfDoom\obj\Debug\DungeonsOfDoom.pdb
+C:\Users\pontu\Desktop\DungeonsOfDoomStart\DungeonsOfDoom\bin\Debug\DungeonsOfDoom.exe.config
+C:\Users\pontu\Desktop\DungeonsOfDoomStart\DungeonsOfDoom\bin\Debug\DungeonsOfDoom.exe
+C:\Users\pontu\Desktop\DungeonsOfDoomStart\DungeonsOfDoom\bin\Debug\DungeonsOfDoom.pdb
+C:\Users\pontu\Desktop\DungeonsOfDoomStart\DungeonsOfDoom\obj\Debug\DungeonsOfDoom.csprojResolveAssemblyReference.cache
+C:\Users\pontu\Desktop\DungeonsOfDoomStart\DungeonsOfDoom\obj\Debug\DungeonsOfDoom.exe
+C:\Users\pontu\Desktop\DungeonsOfDoomStart\DungeonsOfDoom\obj\Debug\DungeonsOfDoom.pdb
+C:\projects\DungeonsOfDoomStart\DungeonsOfDoom\bin\Debug\DungeonsOfDoom.exe.config
+C:\projects\DungeonsOfDoomStart\DungeonsOfDoom\bin\Debug\DungeonsOfDoom.exe
+C:\projects\DungeonsOfDoomStart\DungeonsOfDoom\bin\Debug\DungeonsOfDoom.pdb
+C:\projects\DungeonsOfDoomStart\DungeonsOfDoom\obj\Debug\DungeonsOfDoom.csprojResolveAssemblyReference.cache
+C:\projects\DungeonsOfDoomStart\DungeonsOfDoom\obj\Debug\DungeonsOfDoom.exe
+C:\projects\DungeonsOfDoomStart\DungeonsOfDoom\obj\Debug\DungeonsOfDoom.pdb

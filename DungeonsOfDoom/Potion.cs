@@ -8,11 +8,9 @@ namespace DungeonsOfDoom
 {
     class Potion : Item
     {
-        public string Type { get; set; }
         public int Strength { get; set; }
-        public Potion(string name, int weight, string type, int strength) : base(name, weight)
+        public Potion(string name, int weight, int strength) : base(name, weight)
         {
-            Type = type;
             Strength = strength;
         }
 

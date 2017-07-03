@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DungeonsOfDoom
 {
-    class HealthPotion : Potion
+    class Ogre : Monster
     {
- 
-        public HealthPotion(int weight, int strength) : base("Health Potion", weight, strength)
+        private string name = "Ogre";
+        public Ogre() : base(10, 2)
         {
 
         }

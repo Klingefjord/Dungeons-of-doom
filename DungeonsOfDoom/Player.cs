@@ -8,7 +8,7 @@ namespace DungeonsOfDoom
 {
     class Player : Character
     {
-        public Player(int health, int x, int y) : base(health)
+        public Player(int health, int x, int y) : base(health, 10)
         {
             X = x;
             Y = y;
@@ -21,7 +21,14 @@ namespace DungeonsOfDoom
         // Metoder
         public void Drink(Potion potion)
         {
-            //this.Health += potion.
+            switch (potion)
+            {
+                case HealthPotion hp : this.Health += potion.Strength;
+                    break;
+                case StaminaPotion sp : this.Stamina += potion.Strength;
+                    break;
+            }
+            //this[potion.Type] += potion.Strength;
         }
     }
 }

@@ -19,13 +19,47 @@ namespace DungeonsOfDoom
 
             do
             {
-                Console.Clear();
+                Console.Clear();                
                 DisplayStats();
                 DisplayWorld();
+                PrintBagContents();
                 AskForMovement();
+                CheckRoom();
+                // PrintBagContents();
+                // UseItems();
             } while (player.Health > 0);
 
             GameOver();
+        }
+
+        private void PrintBagContents()
+        {
+            for (int i = 0; i < player.Bag.Contents.Count; i++)
+            {
+                Console.WriteLine(player.Bag.Contents.ElementAt(i).Name);
+            }
+        }
+
+        //private void UseItems()
+        //{
+        //    if (player.Bag.Contents.Count != 0) 
+        //    {
+        //        player.Drink(player.Bag.Contents.ElementAt(0));
+        //    }
+        //}
+
+        private void CheckRoom()
+        {
+            if (world[player.X, player.Y].Monster != null)
+            {
+                player.Health -= 5;
+                world[player.X, player.Y].Monster = null;
+
+            } else if (world[player.X, player.Y].Item != null)
+            {
+                player.Bag.Contents.Add(world[player.X, player.Y].Item);
+                world[player.X, player.Y].Item = null;
+            }
         }
 
         void DisplayStats()
@@ -101,10 +135,19 @@ namespace DungeonsOfDoom
                     if (player.X != x || player.Y != y)
                     {
                         if (random.Next(0, 100) < 10)
-                            world[x, y].Monster = new Monster(30);
+                            world[x, y].Monster = new Ogre();
 
-                        if (random.Next(0, 100) < 10)
-                            world[x, y].Item = new Sword(20, "Harbringer Of Doom", 5);
+                        if (random.Next(0, 100) < 3)
+                            world[x, y].Item = new Sword(20, "Harbringer Of Doom (Sword)", 5);
+
+                        if (random.Next(0, 100) < 4)
+                            world[x, y].Item = new Sword(12, "Steel Sword (Sword)", 2);
+
+                        if (random.Next(0, 100) < 5)
+                            world[x, y].Item = new Sword(2, "Iron Sword (Sword)", 1);
+
+                        if (random.Next(0, 100) < 3)
+                            world[x, y].Item = new HealthPotion(2, 2);
                     }
                 }
             }

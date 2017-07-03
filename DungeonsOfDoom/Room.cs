@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DungeonsOfDoom
 {
     /// <summary>
-    /// This class represents a cell in the world
+    /// This class represents a cell in the world!!
     /// </summary>
     class Room : GameObject
     {

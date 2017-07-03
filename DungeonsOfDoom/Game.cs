@@ -103,13 +103,13 @@ namespace DungeonsOfDoom
                 {
                     Room room = world[x, y];
                     if (player.X == x && player.Y == y)
-                        Console.Write("P");
+                        Console.Write(player.Symbol);
                     else if (room.Monster != null)
-                        Console.Write("M");
+                        Console.Write(room.Monster.Symbol);
                     else if (room.Item != null)
-                        Console.Write("I");
+                        Console.Write(room.Item.Symbol);
                     else
-                        Console.Write(".");
+                        Console.Write(room.Symbol);
                 }
                 Console.WriteLine();
             }
@@ -137,7 +137,7 @@ namespace DungeonsOfDoom
                         if (random.Next(0, 100) < 10)
                             world[x, y].Monster = new Ogre();
 
-                        if (random.Next(0, 100) < 3)
+                        if (random.Next(0, 100) < 1)
                             world[x, y].Item = new Sword(20, "Harbringer Of Doom (Sword)", 5);
 
                         if (random.Next(0, 100) < 4)

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DungeonsOfDoom
 {
-    class Item
+    class Item : GameObject
     {
-        public Item(string name, int weight)
+        public Item(string name, int weight) : base('I')
         {
             Name = name;
             Weight = weight;

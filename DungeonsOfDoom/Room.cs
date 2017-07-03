@@ -6,9 +6,17 @@ using System.Threading.Tasks;
 
 namespace DungeonsOfDoom
 {
-    class Room
+    /// <summary>
+    /// This class represents a cell in the world
+    /// </summary>
+    class Room : GameObject
     {
         public Monster Monster { get; set; }
         public Item Item { get; set; }
+
+        public Room() : base('.')
+        {
+
+        }
     }
 }

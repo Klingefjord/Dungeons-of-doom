@@ -8,9 +8,10 @@ namespace DungeonsOfDoom
 {
     class Monster : Character
     {
-        public Monster(int health, int damage) : base(health, damage, 'M')
+        public string Name { get; }
+        public Monster(int health, int damage, string name) : base(health, damage, 'M')
         {
-
+            Name = name;
         }
     }
 }

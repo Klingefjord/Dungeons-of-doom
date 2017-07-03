@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonsOfDoom
 {
-    class Weapon : Item
+    abstract class Weapon : Item
     {
         public double DmgBuff { get; set; }
 

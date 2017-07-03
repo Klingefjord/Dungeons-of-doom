@@ -54,6 +54,7 @@ namespace DungeonsOfDoom
             {
                 player.Health -= 5;
                 world[player.X, player.Y].Monster = null;
+                // Console.WriteLine($"You just fought a {world[player.X, player.Y].Monster.Name}");
 
             } else if (world[player.X, player.Y].Item != null)
             {

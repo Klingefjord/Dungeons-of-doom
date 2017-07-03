@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonsOfDoom
 {
-    class Potion : Item
+    abstract class Potion : Item
     {
         public int Strength { get; set; }
         public Potion(string name, int weight, int strength) : base(name, weight)

@@ -120,6 +120,7 @@ namespace DungeonsOfDoom
             Console.Clear();
             Console.WriteLine("Game over...");
             Console.ReadKey();
+            //vill vi fråga om användaren vill spela igen?
             Play();
         }
 
@@ -137,10 +138,10 @@ namespace DungeonsOfDoom
                     // Ifall inte spelaren står i rutan, slumpa och se om vi placerar ett objekt i room
                     if (player.X != x || player.Y != y)
                     {
-                        if (random.Next(0, 100) < 10)
+                        if (random.Next(0, 100) < 10) //Vi bestämmer chansen för förekomst (10/100)
                             world[x, y].Monster = new Ogre();
 
-                        if (random.Next(0, 100) < 1)
+                        if (random.Next(0, 100) < 1)  // 1/100 
                             world[x, y].Item = new Sword(20, "Harbringer Of Doom (Sword)", 5);
 
                         if (random.Next(0, 100) < 4)

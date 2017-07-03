@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace DungeonsOfDoom
 {
-    class Item
+    class Bag
     {
-        public Item(string name)
-        {
-            Name = name;
-        }
+        public int Size { get; set; }
+        public List<Item> Items { get; set; } = new List<Item>();
 
-        public string Name { get; set; }
-        public int Weight { get; set; }
+        public Bag(int size)
+        {
+            Size = size;
+        }
     }
 }

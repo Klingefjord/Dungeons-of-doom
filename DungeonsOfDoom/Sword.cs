@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace DungeonsOfDoom
 {
-    class Item
+    class Sword : Weapon
     {
-        public Item(string name)
-        {
-            Name = name;
-        }
+        public int Range { get; set; }
 
-        public string Name { get; set; }
-        public int Weight { get; set; }
+        public Sword(int range, double dmg, string name) : base(dmg, name)
+        {
+            Range = range;
+        }
     }
 }

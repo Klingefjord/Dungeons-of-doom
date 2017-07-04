@@ -124,8 +124,7 @@ namespace DungeonsOfDoom
         private void Equip()
         {
 
-            // ofType för att hitta första potion.
-            foreach (Item i in player.Bag.Contents.OfType<Potion>())
+            foreach (Item i in player.Bag.Contents.OfType<Weapon>())
             {
                 player.UseItem(i);
                 player.Bag.Contents.Remove(i);

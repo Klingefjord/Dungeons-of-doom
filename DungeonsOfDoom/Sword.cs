@@ -10,7 +10,7 @@ namespace DungeonsOfDoom
     {
         public int Range { get; } = 1;
 
-        public Sword(double dmg, string name, int weight) : base(dmg, name, weight)
+        public Sword(int dmg, string name, int weight) : base(dmg, name, weight)
         {
             
         }

@@ -14,6 +14,6 @@ namespace DungeonsOfDoom
             Strength = strength;
         }
 
-        // public bool IsConsumable { get; } = true;
+        abstract public void Use(Player player);
     }
 }

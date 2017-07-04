@@ -39,21 +39,35 @@ namespace DungeonsOfDoom
             }
         }
 
-        //private void UseItems()
-        //{
-        //    if (player.Bag.Contents.Count != 0) 
-        //    {
-        //        player.Drink(player.Bag.Contents.ElementAt(0));
-        //    }
-        //}
-
         private void CheckRoom()
         {
-            if (world[player.X, player.Y].Monster != null)
+            var tempRoom = world[player.X, player.Y];
+            if (tempRoom.Monster != null)
             {
-                player.Health -= 5;
-                Console.WriteLine($"You just fought a {world[player.X, player.Y].Monster.Name}");
-                world[player.X, player.Y].Monster = null;
+                for (int i = 0; true; i++)
+                {
+                    if (player.Health <= 0)
+                    {
+                        GameOver();
+                        break;
+                    }
+                    if (tempRoom.Monster.Health <= 0)
+                    {
+                        tempRoom.Monster = null;
+                        break;
+                    }
+
+                    if (i % 2 == 0)
+                    {
+                        Console.WriteLine(player.Attack(tempRoom.Monster));
+                    } else
+                    {
+                        Console.WriteLine(tempRoom.Monster.Attack(player));
+                    }
+                }
+                //player.Health -= 5;
+                //Console.WriteLine($"You just fought a {world[player.X, player.Y].Monster.Name}");
+                //world[player.X, player.Y].Monster = null;
             }
             else if (world[player.X, player.Y].Item != null)
             {
@@ -80,6 +94,7 @@ namespace DungeonsOfDoom
                 case ConsoleKey.LeftArrow: newX--; break;
                 case ConsoleKey.UpArrow: newY--; break;
                 case ConsoleKey.DownArrow: newY++; break;
+                case ConsoleKey.D: UseAnItem(); break;
                 default: isValidMove = false; break;
             }
 
@@ -92,6 +107,17 @@ namespace DungeonsOfDoom
                 player.Y = newY;
 
                 // player.Health--;
+            }
+        }
+
+        private void UseAnItem()
+        {
+            for (int i = 0; i < player.Bag.Contents.Count; i++)
+            {
+                if (player.Bag.Contents.ElementAt(i) is Potion)
+                {
+                    player.Bag.Contents.ElementAt(i)
+                }
             }
         }
 
@@ -140,6 +166,9 @@ namespace DungeonsOfDoom
                     {
                         if (random.Next(0, 100) < 10) //Vi bestämmer chansen för förekomst (10/100)
                             world[x, y].Monster = new Ogre();
+
+                        if (random.Next(0, 100) < 2) //Vi bestämmer chansen för förekomst (10/100)
+                            world[x, y].Monster = new Dragon();
 
                         if (random.Next(0, 100) < 1)  // 1/100 
                             world[x, y].Item = new Sword(20, "Harbringer Of Doom (Sword)", 5);

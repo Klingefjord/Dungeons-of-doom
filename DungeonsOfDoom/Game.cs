@@ -21,11 +21,9 @@ namespace DungeonsOfDoom
             {
                 Console.Clear();                
                 DisplayStats();
-                DisplayWorld();
-                PrintBagContents();
+                DisplayWorld();               
                 CheckRoom();
-                AskForMovement();
-                CheckForEffects();
+                AskForInput();
                 // UseItems();
             } while (player.Health > 0);
 
@@ -47,7 +45,18 @@ namespace DungeonsOfDoom
         {
             for (int i = 0; i < player.Bag.Contents.Count; i++)
             {
-                Console.WriteLine(player.Bag.Contents.ElementAt(i).Name);
+                Console.WriteLine($"Index {i}: {player.Bag.Contents.ElementAt(i).Name}");
+            }
+            Console.WriteLine();
+            Console.WriteLine("Select item to use or close bag (C):");
+
+            string input = Console.ReadLine();
+            int result;
+            if (Int32.TryParse(input, out result))
+            {
+                Item item = player.Bag.Contents.ElementAt(result);
+                player.UseItem(item);
+                player.Bag.Contents.Remove(item);
             }
         }
 
@@ -97,7 +106,7 @@ namespace DungeonsOfDoom
             //}
         }
 
-        private void AskForMovement()
+        private void AskForInput()
         {
             ConsoleKeyInfo keyInfo = Console.ReadKey(true);
             int newX = player.X;
@@ -106,12 +115,7 @@ namespace DungeonsOfDoom
 
             switch (keyInfo.Key)
             {
-                case ConsoleKey.D: UsePotion(); break;
-                case ConsoleKey.E: Equip(); break;
-            }
-
-            switch (keyInfo.Key)
-            {
+                case ConsoleKey.B: PrintBagContents(); isValidMove = false; break;
                 case ConsoleKey.RightArrow: newX++; break;
                 case ConsoleKey.LeftArrow: newX--; break;
                 case ConsoleKey.UpArrow: newY--; break;
@@ -124,34 +128,11 @@ namespace DungeonsOfDoom
                 newX >= 0 && newX < world.GetLength(0) &&
                 newY >= 0 && newY < world.GetLength(1))
             {
+                // If player moves, buffs should apply!
+                CheckForEffects();
+
                 player.X = newX;
                 player.Y = newY;
-            }
-            else
-            {
-                AskForMovement();
-            }
-        }
-
-        // loopa igenom Items, hantera potion som basklass
-        private void UsePotion()
-        {
-            foreach (Item i in player.Bag.Contents.OfType<Potion>())
-            {
-                player.UseItem(i);
-                player.Bag.Contents.Remove(i);
-                break;
-            }
-        }
-
-        // loopa igenom Items, hantera weapon som basklass
-        private void Equip()
-        {
-            foreach (Item i in player.Bag.Contents.OfType<Weapon>())
-            {
-                player.UseItem(i);
-                player.Bag.Contents.Remove(i);
-                break;
             }
         }
 
@@ -186,7 +167,7 @@ namespace DungeonsOfDoom
 
         private void CreateWorld()
         {
-            world = new Room[20, 5];
+            world = new Room[30, 10];
             for (int y = 0; y < world.GetLength(1); y++)
             {
                 for (int x = 0; x < world.GetLength(0); x++)
@@ -198,22 +179,22 @@ namespace DungeonsOfDoom
                     // Ifall inte spelaren står i rutan, slumpa och se om vi placerar ett objekt i room
                     if (player.X != x || player.Y != y)
                     {
-                        if (random.Next(0, 100) < 10) //Vi bestämmer chansen för förekomst (10/100)
+                        if (random.Next(0, 300) < 10) //Vi bestämmer chansen för förekomst (10/100)
                             world[x, y].Monster = new Ogre();
 
-                        if (random.Next(0, 100) < 2) //Vi bestämmer chansen för förekomst (10/100)
+                        if (random.Next(0, 300) < 2) //Vi bestämmer chansen för förekomst (10/100)
                             world[x, y].Monster = new Dragon();
 
-                        if (random.Next(0, 100) < 1)  // 1/100 
+                        if (random.Next(0, 300) < 1)  // 1/100 
                             world[x, y].Item = new Sword(20, "Harbringer Of Doom (Sword)", 5);
 
-                        if (random.Next(0, 100) < 4)
+                        if (random.Next(0, 300) < 4)
                             world[x, y].Item = new Sword(12, "Steel Sword (Sword)", 2);
 
-                        if (random.Next(0, 100) < 5)
+                        if (random.Next(0, 300) < 5)
                             world[x, y].Item = new Sword(2, "Iron Sword (Sword)", 1);
 
-                        if (random.Next(0, 100) < 3)
+                        if (random.Next(0, 300) < 3)
                             world[x, y].Item = new HealthPotion(2, 2);
                     }
                 }

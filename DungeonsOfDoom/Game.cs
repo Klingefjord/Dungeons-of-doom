@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DungeonsOfDoom.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,9 @@ namespace DungeonsOfDoom
         {
             CreatePlayer();
             CreateWorld();
+
+            TextUtils.Animate("Now entering the Dungeons of Doom");
+            Console.ReadKey(true);
 
             do
             {
@@ -179,23 +183,25 @@ namespace DungeonsOfDoom
                     // Ifall inte spelaren står i rutan, slumpa och se om vi placerar ett objekt i room
                     if (player.X != x || player.Y != y)
                     {
-                        if (random.Next(0, 300) < 10) //Vi bestämmer chansen för förekomst (10/100)
+                        if (Spawner.SpawnPercentage(5)) //Vi bestämmer chansen för förekomst (10/100)
                             world[x, y].Monster = new Ogre();
 
-                        if (random.Next(0, 300) < 2) //Vi bestämmer chansen för förekomst (10/100)
+                        if (Spawner.SpawnPercentage(1)) //Vi bestämmer chansen för förekomst (10/100)
                             world[x, y].Monster = new Dragon();
 
-                        if (random.Next(0, 300) < 1)  // 1/100 
+                        if (Spawner.SpawnPercentage(1))  // 1/100 
                             world[x, y].Item = new Sword(20, "Harbringer Of Doom (Sword)", 5);
 
-                        if (random.Next(0, 300) < 4)
+                        if (Spawner.SpawnPercentage(3))
                             world[x, y].Item = new Sword(12, "Steel Sword (Sword)", 2);
 
-                        if (random.Next(0, 300) < 5)
+                        if (Spawner.SpawnPercentage(5))
                             world[x, y].Item = new Sword(2, "Iron Sword (Sword)", 1);
 
-                        if (random.Next(0, 300) < 3)
+                        if (Spawner.SpawnPercentage(8))
                             world[x, y].Item = new HealthPotion(2, 2);
+                        if (Spawner.SpawnPercentage(2))
+                            world[x, y].Item = new StaminaPotion(2, 2);
                     }
                 }
             }

@@ -34,6 +34,7 @@ namespace DungeonsOfDoom
             }
         }
 
+        // todo Ändra metoden så vi inte anväder referenser
         private void EquipWeapon(Weapon weapon)
         {
             if (CurrentWeapon != null)

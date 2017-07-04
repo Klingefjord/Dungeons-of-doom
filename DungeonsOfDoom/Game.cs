@@ -25,10 +25,21 @@ namespace DungeonsOfDoom
                 PrintBagContents();
                 CheckRoom();
                 AskForMovement();
+                CheckForEffects();
                 // UseItems();
             } while (player.Health > 0);
 
             GameOver();
+        }
+
+        private void CheckForEffects()
+        {
+            if (player.Bleed > 0)
+            {
+                player.Health--;
+                player.Bleed--;
+                Console.WriteLine("You bled 1 hp!");
+            }
         }
 
         private void PrintBagContents()
@@ -109,10 +120,9 @@ namespace DungeonsOfDoom
             }
         }
 
+        // loopa igenom Items, hantera potion som basklass
         private void UsePotion()
         {
-
-            // ofType för att hitta första potion.
             foreach (Item i in player.Bag.Contents.OfType<Potion>())
             {
                 player.UseItem(i);
@@ -121,6 +131,7 @@ namespace DungeonsOfDoom
             }
         }
 
+        // loopa igenom Items, hantera weapon som basklass
         private void Equip()
         {
 

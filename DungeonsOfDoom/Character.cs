@@ -12,6 +12,7 @@ namespace DungeonsOfDoom
         public int Damage { get; set; }
         public int Stamina { get; set; }
         public string Name { get; }
+        public int Bleed { get; set; } = 0;
 
         public Character(int health, int damage, char symbol, string name)
         {

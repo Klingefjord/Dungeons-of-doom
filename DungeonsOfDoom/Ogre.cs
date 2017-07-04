@@ -12,5 +12,7 @@ namespace DungeonsOfDoom
         {
 
         }
+
+        public override char Symbol => 'O';
     }
 }

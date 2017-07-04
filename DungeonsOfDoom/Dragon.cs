@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace DungeonsOfDoom
 {
-    abstract class GameObject
+    class Dragon : Monster
     {
-        virtual public char Symbol { get; } = '.';
+        public Dragon() : base(17, 10, "Dragon")
+        {
+
+        }
+
+        public override char Symbol => 'D';
     }
 }

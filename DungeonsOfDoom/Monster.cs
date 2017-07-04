@@ -9,6 +9,8 @@ namespace DungeonsOfDoom
     class Monster : Character
     {
         public string Name { get; }
+        public override char Symbol => 'M';
+
         public Monster(int health, int damage, string name) : base(health, damage, 'M')
         {
             Name = name;

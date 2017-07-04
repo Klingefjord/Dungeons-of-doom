@@ -13,10 +13,5 @@ namespace DungeonsOfDoom
     {
         public Monster Monster { get; set; }
         public Item Item { get; set; }
-
-        public Room() : base('.')
-        {
-
-        }
     }
 }

@@ -8,11 +8,13 @@ namespace DungeonsOfDoom
 {
     abstract class Item : GameObject
     {
-        public Item(string name, int weight) : base('I')
+        public Item(string name, int weight)
         {
             Name = name;
             Weight = weight;
         }
+
+        public override char Symbol => 'I';
 
         public string Name { get; }
         public int Weight { get; }

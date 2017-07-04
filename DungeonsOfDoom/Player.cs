@@ -17,6 +17,7 @@ namespace DungeonsOfDoom
         public int X { get; set; }
         public int Y { get; set; }
         public Bag Bag { get; } = new Bag(20);
+        public override char Symbol => 'P';
 
         // Metoder
         public void Drink(Potion potion)

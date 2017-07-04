@@ -12,7 +12,7 @@ namespace DungeonsOfDoom
         public int Damage { get; set; }
         public int Stamina { get; set; }
 
-        public Character(int health, int damage, char symbol) : base(symbol)
+        public Character(int health, int damage, char symbol)
         {
             Health = health;
             Damage = damage;

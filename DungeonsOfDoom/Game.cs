@@ -32,6 +32,7 @@ namespace DungeonsOfDoom
             GameOver();
         }
 
+
         private void CheckForEffects()
         {
             if (player.Bleed > 0)
@@ -89,15 +90,25 @@ namespace DungeonsOfDoom
 
         void DisplayStats()
         {
-            Console.WriteLine($"Health: {player.Health}");
+            Console.WriteLine($"Health: {player.Health} \t Attack Dmg: {player.Damage}");
+            //if (player.Bleed > 0)
+            //{
+            //    Console.WriteLine($"\t {player.Name} is currently Bleeding!");
+            //}
         }
 
         private void AskForMovement()
         {
-            ConsoleKeyInfo keyInfo = Console.ReadKey();
+            ConsoleKeyInfo keyInfo = Console.ReadKey(true);
             int newX = player.X;
             int newY = player.Y;
             bool isValidMove = true;
+
+            switch (keyInfo.Key)
+            {
+                case ConsoleKey.D: UsePotion(); break;
+                case ConsoleKey.E: Equip(); break;
+            }
 
             switch (keyInfo.Key)
             {
@@ -105,8 +116,6 @@ namespace DungeonsOfDoom
                 case ConsoleKey.LeftArrow: newX--; break;
                 case ConsoleKey.UpArrow: newY--; break;
                 case ConsoleKey.DownArrow: newY++; break;
-                case ConsoleKey.D: UsePotion(); break;
-                case ConsoleKey.E: Equip(); break;
                 default: isValidMove = false; break;
             }
 
@@ -117,6 +126,10 @@ namespace DungeonsOfDoom
             {
                 player.X = newX;
                 player.Y = newY;
+            }
+            else
+            {
+                AskForMovement();
             }
         }
 
@@ -134,7 +147,6 @@ namespace DungeonsOfDoom
         // loopa igenom Items, hantera weapon som basklass
         private void Equip()
         {
-
             foreach (Item i in player.Bag.Contents.OfType<Weapon>())
             {
                 player.UseItem(i);

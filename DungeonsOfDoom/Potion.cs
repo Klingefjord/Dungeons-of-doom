@@ -13,7 +13,5 @@ namespace DungeonsOfDoom
         {
             Strength = strength;
         }
-
-        abstract public void Use(Player player);
     }
 }

@@ -18,5 +18,10 @@ namespace DungeonsOfDoom
 
         public string Name { get; }
         public int Weight { get; }
+
+        // Buffs har en default på 0
+        public virtual int StaminaBuff { get; set; } = 0;
+        public virtual int HealthBuff { get; set; } = 0;
+        public virtual int DmgBuff { get; set; } = 0;
     }
 }

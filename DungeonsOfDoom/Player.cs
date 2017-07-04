@@ -20,17 +20,11 @@ namespace DungeonsOfDoom
         public override char Symbol => 'P';
 
         // Metoder
-        virtual public void Drink(Potion potion)
+        virtual public void UseItem(Item item)
         {
-            
-            //switch (potion)
-            //{
-            //    case HealthPotion hp : this.Health += potion.Strength;
-            //        break;
-            //    case StaminaPotion sp : this.Stamina += potion.Strength;
-            //        break;
-            //}
-            //this[potion.Type] += potion.Strength;
+            this.Stamina += item.StaminaBuff;
+            this.Health += item.HealthBuff;
+            this.Damage += item.DmgBuff;
         }
     }
 }

@@ -112,12 +112,13 @@ namespace DungeonsOfDoom
 
         private void UseAnItem()
         {
-            for (int i = 0; i < player.Bag.Contents.Count; i++)
+
+            // ofType för att hitta första potion.
+            foreach (Item i in player.Bag.Contents.OfType<Potion>())
             {
-                if (player.Bag.Contents.ElementAt(i) is Potion)
-                {
-                    player.Bag.Contents.ElementAt(i)
-                }
+                player.UseItem(i);
+                player.Bag.Contents.Remove(i);
+                break;
             }
         }
 

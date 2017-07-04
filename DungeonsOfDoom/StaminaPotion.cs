@@ -6,10 +6,6 @@
         {
 
         }
-
-        public override void Use(Player player)
-        {
-            player.Health += Strength;
-        }
+        public override int StaminaBuff { get => this.Strength; set => this.Strength = value; }
     }
 }

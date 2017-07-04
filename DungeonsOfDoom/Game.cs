@@ -94,7 +94,8 @@ namespace DungeonsOfDoom
                 case ConsoleKey.LeftArrow: newX--; break;
                 case ConsoleKey.UpArrow: newY--; break;
                 case ConsoleKey.DownArrow: newY++; break;
-                case ConsoleKey.D: UseAnItem(); break;
+                case ConsoleKey.D: UsePotion(); break;
+                case ConsoleKey.E: Equip(); break;
                 default: isValidMove = false; break;
             }
 
@@ -105,12 +106,22 @@ namespace DungeonsOfDoom
             {
                 player.X = newX;
                 player.Y = newY;
-
-                // player.Health--;
             }
         }
 
-        private void UseAnItem()
+        private void UsePotion()
+        {
+
+            // ofType för att hitta första potion.
+            foreach (Item i in player.Bag.Contents.OfType<Potion>())
+            {
+                player.UseItem(i);
+                player.Bag.Contents.Remove(i);
+                break;
+            }
+        }
+
+        private void Equip()
         {
 
             // ofType för att hitta första potion.

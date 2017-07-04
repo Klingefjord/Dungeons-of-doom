@@ -9,9 +9,9 @@ namespace DungeonsOfDoom
 {
     class Game
     {
-        Player player;
-        Room[,] world;
-        Random random = new Random();
+        Player player; //deklarerar instans av klassen Player
+        Room[,] world; //deklarerar 2D-array av klassen Room.
+        Random random = new Random(); //
 
         public void Play()
         {

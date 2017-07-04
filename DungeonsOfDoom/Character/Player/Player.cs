@@ -15,6 +15,18 @@ namespace DungeonsOfDoom
             this.Y = y;
         }
 
+        const int maxHealth = 50;
+
+        int health;
+
+        public override int Health {
+            get { return health; }
+            set
+            {
+                health = Math.Min(value, maxHealth);
+            }
+        }
+
         public int X { get; set; }
         public int Y { get; set; }
         public Bag Bag { get; } = new Bag(20);
@@ -39,8 +51,7 @@ namespace DungeonsOfDoom
         {
             if (CurrentWeapon != null)
             {
-                Weapon oldWeapon = CurrentWeapon;
-                this.Bag.Contents.Add(oldWeapon);
+                this.Bag.Contents.Add(CurrentWeapon);
                 this.Damage -= CurrentWeapon.DmgBuff;
             }
             CurrentWeapon = weapon;

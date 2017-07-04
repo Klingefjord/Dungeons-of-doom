@@ -13,6 +13,11 @@ namespace DungeonsOfDoom
         Room[,] world; //deklarerar 2D-array av klassen Room.
         Random random = new Random(); //
 
+        const int boardWidth = 30;
+        const int boardHeight = 10;
+
+        public static int monsterCount = 0;
+
         public void Play()
         {
             CreatePlayer();
@@ -29,11 +34,25 @@ namespace DungeonsOfDoom
                 CheckRoom();
                 AskForInput();
                 // UseItems();
-            } while (player.Health > 0);
+            } while (player.Health > 0 && monsterCount > 0);
 
-            GameOver();
+            if (monsterCount == 0)
+            {
+                Win();
+            }
+            else
+            {
+                GameOver();
+            }
         }
 
+        private static void Win()
+        {
+            Console.Clear();
+            TextUtils.Animate("You survived the Dungeons of Doom. You are a true hero!");
+            Console.WriteLine();
+            TextUtils.Animate("Made by: Johanna, Karam, Oliver");
+        }
 
         private void CheckForEffects()
         {
@@ -41,7 +60,7 @@ namespace DungeonsOfDoom
             {
                 player.Health--;
                 player.Bleed--;
-                Console.WriteLine("You bled 1 hp!");
+                Console.WriteLine("You bled 1 HP!");
             }
         }
 
@@ -79,6 +98,7 @@ namespace DungeonsOfDoom
                     if (tempRoom.Monster.Health <= 0)
                     {
                         tempRoom.Monster = null;
+                        monsterCount--;
                         break;
                     }
 
@@ -171,7 +191,8 @@ namespace DungeonsOfDoom
 
         private void CreateWorld()
         {
-            world = new Room[30, 10];
+            world = new Room[boardWidth, boardHeight];
+
             for (int y = 0; y < world.GetLength(1); y++)
             {
                 for (int x = 0; x < world.GetLength(0); x++)
@@ -183,8 +204,8 @@ namespace DungeonsOfDoom
                     // Ifall inte spelaren står i rutan, slumpa och se om vi placerar ett objekt i room
                     if (player.X != x || player.Y != y)
                     {
-                        if (Spawner.SpawnPercentage(5)) //Vi bestämmer chansen för förekomst (10/100)
-                            world[x, y].Monster = new Ogre();
+                        if (Spawner.SpawnPercentage(5)) //Vi bestämmer chansen för förekomst (10/100)               
+                            world[x, y].Monster = new Ogre();  
 
                         if (Spawner.SpawnPercentage(1)) //Vi bestämmer chansen för förekomst (10/100)
                             world[x, y].Monster = new Dragon();

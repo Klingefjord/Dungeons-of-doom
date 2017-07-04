@@ -12,6 +12,7 @@ namespace DungeonsOfDoom
 
         public Monster(int health, int damage, string name) : base(health, damage, 'M', name)
         {
+            Game.monsterCount++;
         }
     }
 }

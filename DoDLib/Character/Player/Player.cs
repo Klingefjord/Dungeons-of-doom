@@ -85,7 +85,7 @@ namespace DoDLib.Character
             {
                 this.Health--;
                 this.Bleed--;
-                return "You bled 1 HP!";//todo fixa bleed effekt!!!!
+                return "You bled 1 HP!";//todo fixa bleed effekt!!!!!
             }
             return "Status Fine";
         }

@@ -43,7 +43,7 @@ namespace DoDLib.Character
             this.Stamina += item.StaminaBuff;
             this.Health += item.HealthBuff;
 
-            if (item is Weapon)
+            if (item is Weapon) 
             {
                 Weapon tempWeapon = item as Weapon;
                 this.EquipWeapon(tempWeapon);

@@ -67,9 +67,11 @@ namespace DungeonsOfDoom
 
         private void PrintBagContents()
         {
+            Console.WriteLine("Bag:");
+            Console.WriteLine("==============");
             for (int i = 0; i < player.Bag.Contents.Count; i++) //loopar igenom listan Contents i vår bag
             {
-                Console.WriteLine($"Index {i}: {player.Bag.Contents.ElementAt(i).Name}");
+                Console.WriteLine($"{player.Bag.Contents.ElementAt(i).Name} \t Index: {i}");
             }
             Console.WriteLine();
             Console.WriteLine("Select item to use or close bag (C):");
@@ -106,7 +108,8 @@ namespace DungeonsOfDoom
                     }
                     if (tempRoom.Monster.Health <= 0)
                     {
-                        player.Bag.Contents.Add(tempRoom.Monster);
+                        Console.WriteLine($"The hero prevails, slaying the {tempRoom.Monster.Name} after a bloody fight!");
+                        Console.WriteLine(player.PickUpSomething(tempRoom.Monster));
                         tempRoom.Monster = null;
                         monsterCount--;
                         break;
@@ -120,12 +123,10 @@ namespace DungeonsOfDoom
                         Console.WriteLine(tempRoom.Monster.Attack(player));
                     }
                 }
-                //player.Health -= 5;
-                //Console.WriteLine($"You just fought a {world[player.X, player.Y].Monster.Name}");
-                //world[player.X, player.Y].Monster = null;
             }
             else if (tempRoom.Item != null)
             {
+
                 player.Bag.Contents.Add(world[player.X, player.Y].Item);
                 world[player.X, player.Y].Item = null;
             }
@@ -231,6 +232,7 @@ namespace DungeonsOfDoom
 
                         if (Spawner.SpawnPercentage(8))
                             world[x, y].Item = new HealthPotion(2, 2);
+
                         if (Spawner.SpawnPercentage(2))
                             world[x, y].Item = new StaminaPotion(2, 2);
                     }

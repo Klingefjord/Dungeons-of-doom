@@ -46,6 +46,12 @@ namespace DungeonsOfDoom
             }
         }
 
+        public string PickUpSomething(IBringable thing)
+        {
+            this.Bag.Contents.Add(thing);
+            return $"{this.Name} picked up {thing.Name}.";
+        }
+
         // todo pick up item metod
 
         private void EquipWeapon(Weapon weapon)

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsOfDoom
+namespace Utils
 {
-    static class Spawner
+    public static class Spawner
     {
         static Random random = new Random();
         public static bool SpawnPercentage(int percentage)

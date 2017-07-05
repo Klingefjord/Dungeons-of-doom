@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsOfDoom
+namespace DoDLib
 {
-    abstract class Character : GameObject
+    public abstract class Character : GameObject
     {    
         public virtual int Health { get; set; }
         public int Damage { get; set; }

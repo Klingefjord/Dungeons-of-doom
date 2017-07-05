@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsOfDoom
+namespace DoDLib
 {
-    abstract class GameObject
+    public abstract class GameObject
     {
         virtual public char Symbol { get; } = '.';
     }

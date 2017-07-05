@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsOfDoom
+namespace DoDLib
 {
-    class Dragon : Monster
+    public class Dragon : Monster
     {
         public Dragon() : base(33, 8, "Dragon", 10)
         {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using DoDLib;
 
 namespace DungeonsOfDoom
 {
@@ -62,7 +62,7 @@ namespace DungeonsOfDoom
             {
                 player.Health--;
                 player.Bleed--;
-                Console.WriteLine("You bled 1 HP!");
+                Console.WriteLine("You bled 1 HP!");//todo fixa bleed effekt
             }
         }
 
@@ -216,12 +216,17 @@ namespace DungeonsOfDoom
                     // Ifall inte spelaren står i rutan, slumpa och se om vi placerar ett objekt i room
                     if (player.X != x || player.Y != y)
                     {
-                        if (Spawner.SpawnPercentage(5)) //Vi bestämmer chansen för förekomst (10/100)               
-                            world[x, y].Monster = new Ogre();  
+                        if (Spawner.SpawnPercentage(5)) //Vi bestämmer chansen för förekomst (10/100)         
+                        {
+                            world[x, y].Monster = new Ogre();
+                            Game.monsterCount++;
+                        }
 
                         if (Spawner.SpawnPercentage(1)) //Vi bestämmer chansen för förekomst (10/100)
+                        {
                             world[x, y].Monster = new Dragon();
-
+                            Game.monsterCount++;
+                        }
                         if (Spawner.SpawnPercentage(1))  // 1/100 
                             world[x, y].Item = new Sword(20, "Harbringer Of Doom (Sword)", 5);
 

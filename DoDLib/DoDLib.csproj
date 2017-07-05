@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3C25B30D-B418-4DFD-9539-EA058771BBFE}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>DungeonsOfDoom</RootNamespace>
-    <AssemblyName>DungeonsOfDoom</AssemblyName>
+    <ProjectGuid>{42AF4AF3-D45E-4015-9657-1C8AF8CED82B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DoDLib</RootNamespace>
+    <AssemblyName>DoDLib</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -42,22 +40,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Character\Character.cs" />
+    <Compile Include="Character\Monster\Dragon.cs" />
+    <Compile Include="Character\Monster\Monster.cs" />
+    <Compile Include="Character\Monster\Ogre.cs" />
+    <Compile Include="Character\Player\Bag.cs" />
+    <Compile Include="Character\Player\IBringable.cs" />
+    <Compile Include="Character\Player\Player.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="GameObject.cs" />
+    <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\Potions\healthpotion.cs" />
+    <Compile Include="Items\Potions\Potion.cs" />
+    <Compile Include="Items\Potions\StaminaPotion.cs" />
+    <Compile Include="Items\Weapons\Sword.cs" />
+    <Compile Include="Items\Weapons\Weapon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DoDLib\DoDLib.csproj">
-      <Project>{42af4af3-d45e-4015-9657-1c8af8ced82b}</Project>
-      <Name>DoDLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Utils\Utils.csproj">
-      <Project>{1147c356-3e76-46ea-8166-676c1a3aac1b}</Project>
-      <Name>Utils</Name>
-    </ProjectReference>
+    <Compile Include="Room.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

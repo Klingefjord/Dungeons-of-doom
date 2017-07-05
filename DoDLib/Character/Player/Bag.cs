@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsOfDoom
+namespace DoDLib
 {
-    class Bag
+    public class Bag
     {
         public int Size { get; set; }
         public List<IBringable> Contents { get; set; } = new List<IBringable>();

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsOfDoom
+namespace DoDLib
 {
-    abstract class Item : GameObject, IBringable
+    public abstract class Item : GameObject, IBringable
     {
         public Item(string name, int weight)
         {

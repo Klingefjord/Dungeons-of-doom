@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsOfDoom
+namespace DoDLib
 {
-    class Monster : Character, IBringable
+    public class Monster : Character, IBringable
     {
         public override char Symbol => 'M';
 
@@ -17,7 +17,7 @@ namespace DungeonsOfDoom
         {
             Weight = weight;
             Name = name;
-            Game.monsterCount++;            
+                    
         }
     }
 }

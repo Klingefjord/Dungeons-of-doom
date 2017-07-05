@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsOfDoom
+namespace DoDLib
 {
-    class Player : Character
+    public class Player : Character
     {
         // todo add max health
         public Player(int health, int x, int y) : base(health, 10, 'P', "You")

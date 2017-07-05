@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsOfDoom
+namespace DoDLib
 {
-    abstract class Potion : Item
+    public abstract class Potion : Item
     {
         public int Strength { get; set; }
         public Potion(string name, int weight, int strength) : base(name, weight)

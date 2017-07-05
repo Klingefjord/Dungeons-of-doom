@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsOfDoom
+namespace DoDLib
 {
-    class Sword : Weapon
+    public class Sword : Weapon
     {
         public int Range { get; } = 1;
 

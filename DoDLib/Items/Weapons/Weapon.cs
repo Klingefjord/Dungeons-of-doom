@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsOfDoom
+namespace DoDLib
 {
-    abstract class Weapon : Item
+    public abstract class Weapon : Item
     {
         public override int DmgBuff { get; set; }
 

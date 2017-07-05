@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsOfDoom
+namespace DoDLib
 {
-    class Ogre : Monster
+    public class Ogre : Monster
     {
         public Ogre() : base(30, 2, "Ogre", 5)
         {

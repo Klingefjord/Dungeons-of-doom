@@ -1,4 +1,4 @@
-﻿namespace DungeonsOfDoom
+﻿namespace DoDLib
 {
     public interface IBringable
     {

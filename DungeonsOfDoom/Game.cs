@@ -9,14 +9,14 @@ namespace DungeonsOfDoom
 {
     class Game
     {
-        Player player;
-        Room[,] world;
-        Random random = new Random();
+        Player player; //deklarerar instans av klassen Player
+        Room[,] world; //deklarerar 2D-array av klassen Room.
+        //Random random = new Random(); kan tas bort då vi har Utils-klassen Spawner
 
         const int boardWidth = 30;
         const int boardHeight = 10;
 
-        public static int monsterCount = 0;
+        public static int monsterCount = 0; //statisk int som går på klassen Game hela tiden
 
         public void Play()
         {
@@ -26,6 +26,7 @@ namespace DungeonsOfDoom
             TextUtils.Animate("Now entering the Dungeons of Doom");
             Console.ReadKey(true);
 
+            //Spel-loopen:
             do
             {
                 Console.Clear();                
@@ -66,16 +67,17 @@ namespace DungeonsOfDoom
 
         private void PrintBagContents()
         {
-            for (int i = 0; i < player.Bag.Contents.Count; i++)
+            for (int i = 0; i < player.Bag.Contents.Count; i++) //loopar igenom listan Contents i vår bag
             {
                 Console.WriteLine($"Index {i}: {player.Bag.Contents.ElementAt(i).Name}");
             }
             Console.WriteLine();
             Console.WriteLine("Select item to use or close bag (C):");
 
-            string input = Console.ReadLine();
+            string input = Console.ReadLine(); 
             int result;
-            if (Int32.TryParse(input, out result))
+            if (Int32.TryParse(input, out result)) //om det går att översätta input till en integer (dvs. ej close bag) går vi in i if-sats:
+                //TryParse returnerar en bool. Användarens input motsvarar itemets index som används(UseItem) och sen försvinner från bag(Remove):
             {
                 IBringable item = player.Bag.Contents.ElementAt(result);
 
@@ -90,10 +92,12 @@ namespace DungeonsOfDoom
 
         private void CheckRoom()
         {
-            var tempRoom = world[player.X, player.Y];
+            Room tempRoom = world[player.X, player.Y];
+
             if (tempRoom.Monster != null)
             {
-                for (int i = 0; true; i++)
+                //Combat-loop:
+                for (int i = 0; true; i++) //körs så länge den är true, dvs. går ur for-loopen när vi når en break;
                 {
                     if (player.Health <= 0)
                     {
@@ -108,7 +112,7 @@ namespace DungeonsOfDoom
                         break;
                     }
 
-                    if (i % 2 == 0)
+                    if (i % 2 == 0) //varannan (genom modulus) attackerar
                     {
                         Console.WriteLine(player.Attack(tempRoom.Monster));
                     } else
@@ -120,7 +124,7 @@ namespace DungeonsOfDoom
                 //Console.WriteLine($"You just fought a {world[player.X, player.Y].Monster.Name}");
                 //world[player.X, player.Y].Monster = null;
             }
-            else if (world[player.X, player.Y].Item != null)
+            else if (tempRoom.Item != null)
             {
                 player.Bag.Contents.Add(world[player.X, player.Y].Item);
                 world[player.X, player.Y].Item = null;
@@ -145,7 +149,7 @@ namespace DungeonsOfDoom
 
             switch (keyInfo.Key)
             {
-                case ConsoleKey.B: PrintBagContents(); isValidMove = false; break;
+                case ConsoleKey.B: PrintBagContents(); isValidMove = false; break; //satt till falskt då spelaren ej förflyttas
                 case ConsoleKey.RightArrow: newX++; break;
                 case ConsoleKey.LeftArrow: newX--; break;
                 case ConsoleKey.UpArrow: newY--; break;
@@ -158,9 +162,9 @@ namespace DungeonsOfDoom
                 newX >= 0 && newX < world.GetLength(0) &&
                 newY >= 0 && newY < world.GetLength(1))
             {
-                // If player moves, buffs should apply!
+                // If player moves, buffs should apply:
                 CheckForEffects();
-
+                //spelarens position ändras:
                 player.X = newX;
                 player.Y = newY;
             }
@@ -168,10 +172,10 @@ namespace DungeonsOfDoom
 
         private void DisplayWorld()
         {
-            for (int y = 0; y < world.GetLength(1); y++)
+            for (int y = 0; y < world.GetLength(1); y++) //varje rad är ett y-värde
             {
-                for (int x = 0; x < world.GetLength(0); x++)
-                {
+                for (int x = 0; x < world.GetLength(0); x++) //Varje kolumn är ett x-värde och loopar för varje cell i arrayen
+                { //skriver ut alla symboler i respektive cell, som ligger i basklassen GameObject
                     Room room = world[x, y];
                     if (player.X == x && player.Y == y)
                         Console.Write(player.Symbol);

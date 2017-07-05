@@ -11,7 +11,7 @@ namespace DungeonsOfDoom.Utils
     {
         public static void Animate(string value)
         {
-            foreach (char c in value)
+            foreach (char c in value) //för varje bokstav i strängen pausar vi i 70millisek. och skriver ut bokstaven
             {
                 Console.Write(c);
                 Thread.Sleep(70);

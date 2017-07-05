@@ -34,7 +34,10 @@ namespace DoDLib.Character
         public Weapon CurrentWeapon { get; set; }
         public override char Symbol => 'P';
 
-        // Metoder
+        /// <summary>
+        /// Method to use item, Adds a buff to player dependent of item property
+        /// </summary>
+        /// <param name="item"></param>
         virtual public void UseItem(Item item)
         {
             this.Stamina += item.StaminaBuff;
@@ -46,7 +49,11 @@ namespace DoDLib.Character
                 this.EquipWeapon(tempWeapon);
             }
         }
-
+        /// <summary>
+        /// Method that picks up stuff and adds in bag
+        /// </summary>
+        /// <param name="thing"></param>
+        /// <returns></returns>
         public string PickUpSomething(IBringable thing)
         {
             this.Bag.Contents.Add(thing);
@@ -55,6 +62,11 @@ namespace DoDLib.Character
 
         // todo pick up item metod
 
+
+        /// <summary>
+        /// Method to equip weapon, adds damage buff of new weapon to default damage, and removes earlier possible buffs
+        /// </summary>
+        /// <param name="weapon"></param>
         private void EquipWeapon(Weapon weapon)
         {
             if (CurrentWeapon != null)

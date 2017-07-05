@@ -61,16 +61,6 @@ namespace DungeonsOfDoom
             Console.Beep(659, 125); Console.Beep(659, 125); Thread.Sleep(125); Console.Beep(659, 125); Thread.Sleep(167); Console.Beep(523, 125); Console.Beep(659, 125); Thread.Sleep(125); Console.Beep(784, 125); Thread.Sleep(375); Console.Beep(392, 125); Thread.Sleep(375); Console.Beep(523, 125); Thread.Sleep(250); Console.Beep(392, 125); Thread.Sleep(250); Console.Beep(330, 125); Thread.Sleep(250); Console.Beep(440, 125); Thread.Sleep(125); Console.Beep(494, 125); Thread.Sleep(125); Console.Beep(466, 125); Thread.Sleep(42); Console.Beep(440, 125); Thread.Sleep(125); Console.Beep(392, 125); Thread.Sleep(125); Console.Beep(659, 125); Thread.Sleep(125); Console.Beep(784, 125); Thread.Sleep(125); Console.Beep(880, 125); Thread.Sleep(125); Console.Beep(698, 125); Console.Beep(784, 125); Thread.Sleep(125); Console.Beep(659, 125); Thread.Sleep(125); Console.Beep(523, 125); Thread.Sleep(125); Console.Beep(587, 125); Console.Beep(494, 125); Thread.Sleep(125); Console.Beep(523, 125); Thread.Sleep(250); Console.Beep(392, 125); Thread.Sleep(250); Console.Beep(330, 125); Thread.Sleep(250); Console.Beep(440, 125); Thread.Sleep(125); Console.Beep(494, 125); Thread.Sleep(125); Console.Beep(466, 125); Thread.Sleep(42); Console.Beep(440, 125); Thread.Sleep(125); Console.Beep(392, 125); Thread.Sleep(125); Console.Beep(659, 125); Thread.Sleep(125); Console.Beep(784, 125); Thread.Sleep(125); Console.Beep(880, 125); Thread.Sleep(125); Console.Beep(698, 125); Console.Beep(784, 125); Thread.Sleep(125); Console.Beep(659, 125);
         }
 
-        private void CheckForEffects()
-        {
-            if (player.Bleed > 0)
-            {
-                player.Health--;
-                player.Bleed--;
-                Console.WriteLine("You bled 1 HP!");//todo fixa bleed effekt
-            }
-        }
-
         private void PrintBagContents()
         {
             Console.WriteLine("Bag:");
@@ -141,6 +131,8 @@ namespace DungeonsOfDoom
         void DisplayStats()
         {
             Console.WriteLine($"Health: {player.Health} \t Attack Dmg: {player.Damage}");
+            // Calling instance "player." If player moves, buffs should apply:
+            Console.WriteLine(player.CheckForEffects());
             //if (player.Bleed > 0)
             //{
             //    Console.WriteLine($"\t {player.Name} is currently Bleeding!");
@@ -169,8 +161,7 @@ namespace DungeonsOfDoom
                 newX >= 0 && newX < world.GetLength(0) &&
                 newY >= 0 && newY < world.GetLength(1))
             {
-                // If player moves, buffs should apply:
-                CheckForEffects();
+
                 //spelarens position ändras:
                 player.X = newX;
                 player.Y = newY;

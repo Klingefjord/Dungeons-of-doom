@@ -43,6 +43,8 @@ namespace DoDLib.Character
             this.Stamina += item.StaminaBuff;
             this.Health += item.HealthBuff;
 
+            //todo think about polymorphism 
+
             if (item is Weapon)
             {
                 Weapon tempWeapon = item as Weapon;
@@ -76,6 +78,16 @@ namespace DoDLib.Character
             }
             CurrentWeapon = weapon;
             this.Damage += weapon.DmgBuff;
+        }
+        public string CheckForEffects()
+        {
+            if (this.Bleed > 0)
+            {
+                this.Health--;
+                this.Bleed--;
+                return "You bled 1 HP!";//todo fixa bleed effekt
+            }
+            return "Status Fine";
         }
     }
 }

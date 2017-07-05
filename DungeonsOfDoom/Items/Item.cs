@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonsOfDoom
 {
-    abstract class Item : GameObject
+    abstract class Item : GameObject, IBringable
     {
         public Item(string name, int weight)
         {
@@ -16,8 +16,8 @@ namespace DungeonsOfDoom
 
         public override char Symbol => 'I';
 
-        public string Name { get; }
-        public int Weight { get; }
+        public string Name { get; set; }
+        public int Weight { get; set; }
 
         // Buffs har en default på 0
         public virtual int StaminaBuff { get; set; } = 0;

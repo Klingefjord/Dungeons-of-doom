@@ -46,7 +46,8 @@ namespace DungeonsOfDoom
             }
         }
 
-        // todo Ändra metoden så vi inte anväder referenser
+        // todo pick up item metod
+
         private void EquipWeapon(Weapon weapon)
         {
             if (CurrentWeapon != null)

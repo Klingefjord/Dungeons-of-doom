@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace DungeonsOfDoom
 {
-    class Monster : Character
+    class Monster : Character, IBringable
     {
         public override char Symbol => 'M';
 
-        public Monster(int health, int damage, string name) : base(health, damage, 'M', name)
+        public int Weight { get; set; }
+        public string Name { get; set; }
+
+        public Monster(int health, int damage, string name, int weight) : base(health, damage, 'M', name)
         {
-            Game.monsterCount++;
+            Weight = weight;
+            Name = name;
+            Game.monsterCount++;            
         }
     }
 }

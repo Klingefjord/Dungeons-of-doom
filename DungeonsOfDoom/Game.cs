@@ -77,9 +77,14 @@ namespace DungeonsOfDoom
             int result;
             if (Int32.TryParse(input, out result))
             {
-                Item item = player.Bag.Contents.ElementAt(result);
-                player.UseItem(item);
-                player.Bag.Contents.Remove(item);
+                IBringable item = player.Bag.Contents.ElementAt(result);
+
+                if (item is Item)
+                {
+                    Item tempItem = item as Item;
+                    player.UseItem(tempItem);
+                    player.Bag.Contents.Remove(item);
+                }                
             }
         }
 
@@ -97,6 +102,7 @@ namespace DungeonsOfDoom
                     }
                     if (tempRoom.Monster.Health <= 0)
                     {
+                        player.Bag.Contents.Add(tempRoom.Monster);
                         tempRoom.Monster = null;
                         monsterCount--;
                         break;
@@ -231,6 +237,7 @@ namespace DungeonsOfDoom
         private void CreatePlayer()
         {
             player = new Player(30, 0, 0);
+
         }
     }
 }

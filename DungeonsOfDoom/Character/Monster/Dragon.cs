@@ -8,7 +8,7 @@ namespace DungeonsOfDoom
 {
     class Dragon : Monster
     {
-        public Dragon() : base(33, 8, "Dragon")
+        public Dragon() : base(33, 8, "Dragon", 10)
         {
 
         }

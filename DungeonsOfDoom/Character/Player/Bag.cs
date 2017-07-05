@@ -9,7 +9,7 @@ namespace DungeonsOfDoom
     class Bag
     {
         public int Size { get; set; }
-        public List<Item> Contents { get; set; } = new List<Item>();
+        public List<IBringable> Contents { get; set; } = new List<IBringable>();
 
         public Bag(int size)
         {

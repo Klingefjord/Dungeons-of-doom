@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DoDLib
+namespace DoDLib.Items
 {
     public abstract class Item : GameObject, IBringable
     {

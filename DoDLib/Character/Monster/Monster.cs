@@ -16,8 +16,7 @@ namespace DoDLib.Character
         public Monster(int health, int damage, string name, int weight) : base(health, damage, 'M', name)
         {
             Weight = weight;
-            Name = name;
-                    
+            Name = name;                    
         }
     }
 }

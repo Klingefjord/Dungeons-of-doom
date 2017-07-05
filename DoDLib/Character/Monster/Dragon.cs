@@ -10,11 +10,16 @@ namespace DoDLib.Character
     {
         public Dragon() : base(33, 8, "Dragon", 10)
         {
-
         }
 
         public override char Symbol => 'D';
 
+        /// <summary>
+        /// Subtract health from opponent based on damage. 
+        /// Also adds "Bleed" debuff
+        /// </summary>
+        /// <param name="opponent"></param>
+        /// <returns></returns>
         public override string Attack(Character opponent)
         {
             opponent.Health -= this.Damage;

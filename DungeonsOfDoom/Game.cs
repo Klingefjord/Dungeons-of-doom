@@ -65,6 +65,7 @@ namespace DungeonsOfDoom
                 player.Health--;
                 player.Bleed--;
                 Console.WriteLine("You bled 1 HP!");//todo fixa bleed effekt
+
             }
         }
 

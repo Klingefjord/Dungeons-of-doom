@@ -45,9 +45,8 @@
     <Compile Include="Character\Monster\Monster.cs" />
     <Compile Include="Character\Monster\Ogre.cs" />
     <Compile Include="Character\Player\Bag.cs" />
-    <Compile Include="Character\Player\IBringable.cs" />
+    <Compile Include="IBringable.cs" />
     <Compile Include="Character\Player\Player.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="Items\Item.cs" />
     <Compile Include="Items\Potions\healthpotion.cs" />

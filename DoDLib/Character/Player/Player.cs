@@ -43,8 +43,6 @@ namespace DoDLib.Character
             this.Stamina += item.StaminaBuff;
             this.Health += item.HealthBuff;
 
-            //todo think about polymorphism 
-
             if (item is Weapon)
             {
                 Weapon tempWeapon = item as Weapon;

@@ -27,6 +27,7 @@ namespace DungeonsOfDoom
             CreatePlayer();
             CreateWorld();
 
+            Console.BackgroundColor = ConsoleColor.Black;
             TextUtils.Animate("Now entering the Dungeons of Doom");
             Console.ReadKey(true);
 
@@ -84,6 +85,9 @@ namespace DungeonsOfDoom
                     Item tempItem = item as Item;
                     player.UseItem(tempItem);
                     player.Bag.Contents.Remove(item);
+                } else
+                {
+
                 }                
             }
         }
@@ -201,7 +205,8 @@ namespace DungeonsOfDoom
         private void GameOver()
         {
             Console.Clear();
-            Console.WriteLine("Game over...");
+            Console.BackgroundColor = ConsoleColor.DarkRed;
+            TextUtils.Animate("Game over...");
             Console.ReadKey();
             //vill vi fråga om användaren vill spela igen?
             Play();

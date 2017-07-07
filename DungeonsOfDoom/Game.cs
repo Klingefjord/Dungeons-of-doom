@@ -120,11 +120,18 @@ namespace DungeonsOfDoom
                     }
                 }
             }
+
+            // Det finns ett item i rummet
             else if (tempRoom.Item != null)
             {
-
-                player.Bag.Contents.Add(world[player.X, player.Y].Item);
-                world[player.X, player.Y].Item = null;
+                if (player.CheckSize(world[player.X, player.Y].Item))
+                {
+                    Console.WriteLine(player.PickUpSomething(world[player.X, player.Y].Item));
+                    world[player.X, player.Y].Item = null;
+                } else
+                {
+                    Console.WriteLine(player.PickUpSomething(world[player.X, player.Y].Item));
+                }
             }
         }
 
@@ -165,6 +172,9 @@ namespace DungeonsOfDoom
                 //spelarens position ändras:
                 player.X = newX;
                 player.Y = newY;
+
+                // När spelaren rör på sig, applicera effekter
+                player.ApplyEffects();
             }
         }
 

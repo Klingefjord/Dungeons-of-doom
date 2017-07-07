@@ -10,7 +10,6 @@ namespace DoDLib.Character
     // Player class
     public class Player : Character
     {
-        // todo add max health
         public Player(int health, int x, int y) : base(health, 10, 'P', "You")
         {
             this.X = x;
@@ -31,7 +30,7 @@ namespace DoDLib.Character
 
         public int X { get; set; }
         public int Y { get; set; }
-        public Bag Bag { get; } = new Bag(20);
+        public Bag Bag { get; } = new Bag(40);
         public Weapon CurrentWeapon { get; set; }
         public override char Symbol => 'P';
 
@@ -59,8 +58,27 @@ namespace DoDLib.Character
         /// <returns></returns>
         public string PickUpSomething(IBringable thing)
         {
-            this.Bag.Contents.Add(thing);
-            return $"{this.Name} picked up {thing.Name}.";
+            if (CheckSize(thing))
+            {
+                this.Bag.Contents.Add(thing);
+                return $"{this.Name} picked up {thing.Name}.";
+            }
+            else
+            {
+                return $"Bag is full! Can't pick up {thing.Name}";
+            }
+        }
+
+        public bool CheckSize(IBringable thing)
+        {
+            int total = 0;
+            this.Bag.Contents.ForEach((item) => total += item.Weight);
+
+            if (total + thing.Weight < this.Bag.Size)
+            {
+                return true;
+            }
+            return false;
         }
 
         // todo pick up item metod
@@ -80,14 +98,25 @@ namespace DoDLib.Character
             CurrentWeapon = weapon;
             this.Damage += weapon.DmgBuff;
         }
+        
+        public void ApplyEffects()
+        {
+            if (this.Bleed > 0)
+            {
+                Console.BackgroundColor = ConsoleColor.DarkRed;
+                this.Health--;
+                this.Bleed--;
+            }
+            //todo fixa bleed effekt!!!!!
+        }
+
         public string CheckForEffects()
         {
             if (this.Bleed > 0)
             {
-                this.Health--;
-                this.Bleed--;
-                return "You bled 1 HP!";//todo fixa bleed effekt!!!!!
+                return "You bled 1 HP!";
             }
+            Console.BackgroundColor = ConsoleColor.Black;
             return "Status Fine";
         }
     }

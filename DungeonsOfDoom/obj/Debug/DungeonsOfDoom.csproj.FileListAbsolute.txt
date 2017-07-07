@@ -32,3 +32,7 @@ C:\Users\Administrator\Source\Repos\Dungeons-of-doom\DungeonsOfDoom\bin\Debug\Ut
 C:\Users\Administrator\Source\Repos\Dungeons-of-doom\DungeonsOfDoom\bin\Debug\Utils.pdb
 C:\Users\Administrator\Source\Repos\Dungeons-of-doom\DungeonsOfDoom\bin\Debug\DoDLib.dll
 C:\Users\Administrator\Source\Repos\Dungeons-of-doom\DungeonsOfDoom\bin\Debug\DoDLib.pdb
+C:\projects\DungeonsOfDoomStart\DungeonsOfDoom\bin\Debug\DoDLib.dll
+C:\projects\DungeonsOfDoomStart\DungeonsOfDoom\bin\Debug\Utils.dll
+C:\projects\DungeonsOfDoomStart\DungeonsOfDoom\bin\Debug\DoDLib.pdb
+C:\projects\DungeonsOfDoomStart\DungeonsOfDoom\bin\Debug\Utils.pdb

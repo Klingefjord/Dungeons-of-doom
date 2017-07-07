@@ -7,6 +7,7 @@ using DoDLib.Items;
 
 namespace DoDLib.Character
 {
+    // Player class
     public class Player : Character
     {
         // todo add max health

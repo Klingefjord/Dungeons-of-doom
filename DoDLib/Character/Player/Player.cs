@@ -63,11 +63,11 @@ namespace DoDLib.Character
             }
             else
             {
-                return $"Bag is full! Can't pick up {thing.Name}";
+                return $"{thing.Name}";
             }
         }
 
-        public bool CheckSize(IBringable thing)
+        private bool CheckSize(IBringable thing)
         {
             int total = 0;
             this.Bag.Contents.ForEach((item) => total += item.Weight);

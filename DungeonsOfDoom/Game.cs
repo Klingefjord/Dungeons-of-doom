@@ -39,7 +39,7 @@ namespace DungeonsOfDoom
                 DisplayWorld();               
                 CheckRoom();
                 AskForInput();
-                // UseItems();
+                MoveMonsters(player);
             } while (player.Health > 0 && monsterCount > 0);
 
             if (monsterCount == 0)
@@ -49,6 +49,40 @@ namespace DungeonsOfDoom
             else
             {
                 GameOver();
+            }
+        }
+
+        /// <summary>
+        /// Loop through game world and update chasing monsters positions
+        /// </summary>
+        private void MoveMonsters(Player p)
+        {
+            for (int y = 0; y < world.GetLength(1); y++)
+            {
+                for (int x = 0; x < world.GetLength(0); x++)
+                {
+                    if (world[x,y].Monster != null)
+                        if (world[x,y].Monster.Chasing)
+                        {
+                            int xHolder = x,
+                                yHolder = y;
+
+
+
+                            // Move towards player
+                            if (p.X > x)
+                                xHolder++;
+                            else if (p.X < x)
+                                xHolder--;
+                            if (p.Y > y)
+                                yHolder++;
+                            else if (p.Y < y)
+                                yHolder--;
+
+                            world[xHolder, yHolder].Monster = world[x, y].Monster;
+                            world[x, y].Monster = null;
+                        }
+                }
             }
         }
 
@@ -128,14 +162,11 @@ namespace DungeonsOfDoom
             // Det finns ett item i rummet
             else if (tempRoom.Item != null)
             {
-                if (player.CheckSize(world[player.X, player.Y].Item))
-                {
-                    Console.WriteLine(player.PickUpSomething(world[player.X, player.Y].Item));
+                string tempString = player.PickUpSomething(world[player.X, player.Y].Item);
+                Console.WriteLine(tempString);
+
+                if (tempString != world[player.X, player.Y].Item.Name)
                     world[player.X, player.Y].Item = null;
-                } else
-                {
-                    Console.WriteLine(player.PickUpSomething(world[player.X, player.Y].Item));
-                }
             }
         }
 
@@ -192,7 +223,10 @@ namespace DungeonsOfDoom
                     if (player.X == x && player.Y == y)
                         Console.Write(player.Symbol);
                     else if (room.Monster != null)
+                    {
                         Console.Write(room.Monster.Symbol);
+                    }
+                    
                     else if (room.Item != null)
                         Console.Write(room.Item.Symbol);
                     else

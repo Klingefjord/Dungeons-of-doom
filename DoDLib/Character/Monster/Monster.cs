@@ -12,11 +12,12 @@ namespace DoDLib.Character
 
         public int Weight { get; set; }
         public string Name { get; set; }
+        public bool Chasing { get; set; } = false;
 
         public Monster(int health, int damage, string name, int weight) : base(health, damage, 'M', name)
         {
             Weight = weight;
             Name = name;                    
-        }
+        }  
     }
 }
